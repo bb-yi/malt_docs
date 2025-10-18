@@ -24,7 +24,6 @@ theme:
 nav:
     - 首页: index.md
     - 节点树类型与渲染流程简介: 渲染流程简介.md
-    - markdown帮助: mdtemp.md
 
 markdown_extensions:
     - admonition  # 提示块
