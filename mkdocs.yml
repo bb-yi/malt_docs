@@ -1,0 +1,37 @@
+site_name: Blender Malt NPR 渲染指南 
+theme:
+  name: material
+  palette: 
+    - scheme: default
+      primary: deep purple
+      accent: red
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+    - scheme: slate
+      primary: deep purple
+      accent: red
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.expand    # 左侧导航栏自动展开 (不设置的话需要手动点开)
+    # - toc.integrate        # TOC集成到左侧导航栏中，不设置的话右侧将单独开一个TOC的导航栏
+    - navigation.top       # 回到页面顶部
+    - search.suggest       # 搜索建议
+    - search.highlight     # 搜索结果高亮显示
+
+nav:
+    - 首页: index.md
+    - 节点树类型与渲染流程简介: 渲染流程简介.md
+    - markdown帮助: mdtemp.md
+
+markdown_extensions:
+    - admonition  # 提示块
+    - attr_list #属性控制
+use_directory_urls: false
+site_url: ""
+plugins:
+  - mkdocs-video:
+      is_video: True
+  
