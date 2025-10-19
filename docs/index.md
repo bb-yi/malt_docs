@@ -1,4 +1,4 @@
-# 欢迎来到Malt系列渲染教程
+# Blender Malt NPR 渲染指南 
 
 <video src="https://www.pragma37.com/docs/rtc2021/renato3xl.mp4" 
 autoplay
@@ -140,6 +140,8 @@ Malt(麦芽)是一个**完全可定制**的免费开源引擎，主要针对NPR�
 
         在`插件目录:addons\BlenderMalt\.MaltPath\Malt\Pipelines\MiniPipeline`
 
+        <span style="color: red;">**渲染管线右边的刷新按钮可以重启渲染器,非常有用**</span>
+
 - 渲染信息
     <figure style="text-align: center;">
     <img src="img/18.png" alt="图片" style=" border-radius: 20px;">
@@ -160,10 +162,12 @@ Malt(麦芽)是一个**完全可定制**的免费开源引擎，主要针对NPR�
 
     材质只受**相同灯光组**的**灯光**的影响
 
-    <0,0,0>是背景的组，不要用
+    <0,0,0>是背景使用的组，一般不要设置成一样的
 ## 相关资源 {#相关资源}
 - [Malt 官方文档](https://malt3d.com/){#官方文档}
 - [Malt GitHub仓库](https://github.com/bnpr/Malt)   
+- [示例材质](https://github.com/bnpr/Malt/discussions/94)
+- [B站教程](https://www.bilibili.com/video/BV1sd4y1477T/?spm_id_from=333.337.search-card.all.click&vd_source=595aeb226156d1c36fb30d91df5fb837)
 - [讨论区](https://github.com/bnpr/Malt/discussions)    
 - [BNPR](https://blendernpr.org/)   
 - [Discord](https://discord.gg/bnpr-335479185197891585) 
