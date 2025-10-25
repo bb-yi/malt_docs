@@ -26,8 +26,9 @@ theme:
 
 nav:
     - 首页: index.md
-    - 节点树类型与渲染流程简介: 渲染流程简介.md
-    - Malt插件和自定义节点: malt插件和自定义节点.md
+    - 节点树类型与渲染流程简介: 2_渲染流程简介.md
+    - Malt插件和自定义节点: 3_malt插件和自定义节点.md
+    - 贴图构成及光影: 4_贴图构成及光影.md
 
 markdown_extensions:
     - admonition  # 提示块
@@ -36,8 +37,14 @@ markdown_extensions:
     - pymdownx.superfences
     - pymdownx.inlinehilite
     - pymdownx.snippets
+    - pymdownx.arithmatex:
+        generic: true
 use_directory_urls: false
 site_url: ""
 plugins:
   - mkdocs-video:
       is_video: True
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
