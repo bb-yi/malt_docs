@@ -1,0 +1,1601 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="3_malt%E6%8F%92%E4%BB%B6%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E8%8A%82%E7%82%B9.html">
+      
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>贴图构成及光影 - Blender Malt NPR 渲染指南</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Blender Malt NPR 渲染指南" class="md-header__button md-logo" aria-label="Blender Malt NPR 渲染指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Blender Malt NPR 渲染指南
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              贴图构成及光影
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="red"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="red"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Blender Malt NPR 渲染指南" class="md-nav__button md-logo" aria-label="Blender Malt NPR 渲染指南" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Blender Malt NPR 渲染指南
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    首页
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2_%E6%B8%B2%E6%9F%93%E6%B5%81%E7%A8%8B%E7%AE%80%E4%BB%8B.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    节点树类型与渲染流程简介
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3_malt%E6%8F%92%E4%BB%B6%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E8%8A%82%E7%82%B9.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Malt插件和自定义节点
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    贴图构成及光影
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="4_%E8%B4%B4%E5%9B%BE%E6%9E%84%E6%88%90%E5%8F%8A%E5%85%89%E5%BD%B1.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    贴图构成及光影
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      贴图
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="贴图">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_d" class="md-nav__link">
+    <span class="md-ellipsis">
+      _D后缀
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_n" class="md-nav__link">
+    <span class="md-ellipsis">
+      _N后缀
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      _ID后缀
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_hm" class="md-nav__link">
+    <span class="md-ellipsis">
+      _HM后缀
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_skin" class="md-nav__link">
+    <span class="md-ellipsis">
+      _Skin后缀
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      SDF贴图
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eye" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eye贴图
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uv" class="md-nav__link">
+    <span class="md-ellipsis">
+      UV
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      顶点色
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建阴影
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="创建阴影">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      法线转换
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      二分阴影
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二分阴影">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shadow-offset" class="md-nav__link">
+    <span class="md-ellipsis">
+      阴影偏移Shadow Offset
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      阴影着色
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdf_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      SDF
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SDF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shader" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何传递数据到Shader内
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="如何传递数据到Shader内">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      驱动器
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      灯光传递
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      刘海投影
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      贴图
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="贴图">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_d" class="md-nav__link">
+    <span class="md-ellipsis">
+      _D后缀
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_n" class="md-nav__link">
+    <span class="md-ellipsis">
+      _N后缀
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      _ID后缀
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_hm" class="md-nav__link">
+    <span class="md-ellipsis">
+      _HM后缀
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_skin" class="md-nav__link">
+    <span class="md-ellipsis">
+      _Skin后缀
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      SDF贴图
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eye" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eye贴图
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uv" class="md-nav__link">
+    <span class="md-ellipsis">
+      UV
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      顶点色
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建阴影
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="创建阴影">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      法线转换
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      二分阴影
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二分阴影">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shadow-offset" class="md-nav__link">
+    <span class="md-ellipsis">
+      阴影偏移Shadow Offset
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      阴影着色
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdf_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      SDF
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SDF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shader" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何传递数据到Shader内
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="如何传递数据到Shader内">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      驱动器
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      灯光传递
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      刘海投影
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<div><h1 id="_1">贴图构成及光影</h1>
+<p>这个章节里将创建基本的光影效果,并且简单介绍一下鸣潮里的贴图构成</p>
+<div class="admonition danger">
+<p class="admonition-title">注意</p>
+<p>贴图类型及用法存在大量主观推测,可能非实际用法,仅供参考</p>
+</div>
+<h2 id="_2">贴图</h2>
+<figure style="text-align: center;">
+<img src="img/24.png" alt="图片" style=" border-radius: 20px;">
+<figcaption><small>贴图构成<small></small></small></figcaption>
+</figure>
+
+<p>鸣潮中一个角色包含5种类型的贴图:</p>
+<h3 id="_d">_D后缀</h3>
+<div style="display: flex; justify-content: center; align-items: flex-start; gap: 10px;">
+  <figure style="text-align: center;">
+    <img src="img/26.png" alt="图片1" style="border-radius: 40px; height: auto; max-height: 500px;">
+<figcaption><small>基础色<small></small></small></figcaption>
+  </figure>
+  <figure style="text-align: center;">
+    <img src="img/25.png" alt="图片2" style="border-radius: 40px; height: auto; max-height: 500px;">
+<figcaption><small>Alpha通道<small></small></small></figcaption>
+  </figure>
+</div>
+
+<p>_D后缀的贴图记录了<code>基础色</code>,<code>透明度</code>以及<code>固定阴影</code>,其中的<code>Alpha</code>通道分为两种情况</p>
+<ul>
+<li>如果是透明物体,则表示透明度</li>
+<li>如果是不透明物体,则表示永远为阴影的部分的固有阴影</li>
+</ul>
+<h3 id="_n">_N后缀</h3>
+<figure style="text-align: center;">
+<img src="img/27.png" alt="图片" style=" border-radius: 20px;">
+<figcaption><small>R,G 法线<small></small></small></figcaption>
+</figure>
+<div style="display: flex; justify-content: center; align-items: flex-start; gap: 10px;">
+  <figure style="text-align: center;">
+    <img src="img/28.png" alt="图片1" style="border-radius: 40px; height: auto; max-height: 500px;">
+<figcaption><small>B 金属度<small></small></small></figcaption>
+  </figure>
+  <figure style="text-align: center;">
+    <img src="img/29.png" alt="图片2" style="border-radius: 40px; height: auto; max-height: 500px;">
+<figcaption><small>A 粗糙度<small></small></small></figcaption>
+  </figure>
+</div>
+<p>_D后缀的贴图记录了<code>法线</code>,<code>金属度</code>,<code>粗糙度</code></p>
+<ul>
+<li>R,G通道记录了法线信息</li>
+<li>B通道记录了金属度信息</li>
+<li>A通道记录了粗糙度信息</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">绿色法线的使用方法</p>
+<p>法向是一个单位向量，利用长度为1可以还原出原本的法线
+</p><div class="highlight"><pre><span></span><code>normal = vec3(xy.x, xy.y, sqrt(1-clamp(dot(xy, xy),0.,1.)))*0.5+0.5;
+</code></pre></div>
+需要注意的是,计算Z通道时需要先将R,G通道的数值转换成-1到1的区间
+</div>
+<h3 id="_id">_ID后缀</h3>
+<figure style="text-align: center;">
+<img src="img/30.png" alt="图片" style=" border-radius: 20px;">
+<figcaption><small>ID贴图<small></small></small></figcaption>
+</figure>
+
+<p>没啥好说的,就是一个ID贴图,用来抠出不同的部位</p>
+<h3 id="_hm">_HM后缀</h3>
+<div style="display: flex; justify-content: center; align-items: flex-start; gap: 10px;">
+  <figure style="text-align: center;">
+    <img src="img/31.png" alt="图片1" style="border-radius: 40px; height: auto; max-height: 500px;">
+<figcaption><small>R 高光<small></small></small></figcaption>
+  </figure>
+  <figure style="text-align: center;">
+    <img src="img/32.png" alt="图片2" style="border-radius: 40px; height: auto; max-height: 500px;">
+<figcaption><small>G通道<small></small></small></figcaption>
+  </figure>
+</div>
+
+<p>_HM后缀的贴图是头发专属的贴图,R通道是<code>高光</code>,G通道看着像头发的<code>阴影</code>,或者是<code>阴影偏移(Shadow Offset)</code>(?存疑)</p>
+<h3 id="_skin">_Skin后缀</h3>
+<figure style="text-align: center;">
+<img src="img/33.png" alt="图片" style=" border-radius: 20px;">
+<figcaption><small>Ramp<small></small></small></figcaption>
+</figure>
+
+<p>Ramp图,用来映射阴影颜色</p>
+<p>用<code>NdotL</code>映射x轴,不同的<code>ID</code>映射y轴</p>
+<p>这里的颜色和游戏里的不太一样,可能是额外改过的</p>
+<p>这个案例里没有使用到</p>
+<h3 id="sdf">SDF贴图</h3>
+<div style="display: flex; justify-content: center; align-items: flex-start; gap:5px;">
+  <figure style="text-align: center;">
+    <img src="img/43.png" alt="图片1" style="border-radius: 20px; height: 400px; width: auto;">
+  </figure>
+  <figure style="text-align: center;">
+    <img src="img/44.png" alt="图片2" style="border-radius: 20px; height: 400px; width: auto;">
+  </figure>
+</div>
+
+<p>左侧为SDF的原始图像,鸣潮的SDF分在三个通道里存储,需要手动合成一下,将R,B,A三个通道相加取平均即可</p>
+<p><span class="arithmatex">\(SDF=(T.R+T.B+T.A)/3\)</span></p>
+<p>G通道用途未知</p>
+<h3 id="eye">Eye贴图</h3>
+<figure style="text-align: center;">
+<img src="img/45.png" alt="图片" style=" border-radius: 20px;">
+<figcaption><small>Eye贴图<small></small></small></figcaption>
+</figure>
+
+<p>其中的R通道看着像高光,但是我加上去发现和游戏里的不一样,折腾了好久还是不知道怎么弄,只能作罢</p>
+<p>案例里的高光是手动添加上去的</p>
+<h2 id="uv">UV</h2>
+<p>鸣潮的模型一共有四张UV,分别是:</p>
+<ul>
+<li>UV0: 用于映射贴图</li>
+<li>UV1: 使用八面体压缩的方式存储的平滑法线,用于描边(眼睛并不是)</li>
+<li>UV2: 和<code>UV0</code>是一样的</li>
+<li>UV3: 存储了静止姿态时的世界位置</li>
+</ul>
+<div style="display: flex; justify-content: center; align-items: flex-start; gap:5px;">
+  <figure style="text-align: center;">
+    <img src="img/34.png" alt="图片1" style="border-radius: 20px; height: 400px; width: auto;">
+    <figcaption><small>UV0</small></figcaption>
+  </figure>
+  <figure style="text-align: center;">
+    <img src="img/35.png" alt="图片2" style="border-radius: 20px; height: 400px; width: auto;">
+    <figcaption><small>UV1</small></figcaption>
+  </figure>
+</div>
+
+<div style="display: flex; justify-content: center; align-items: flex-start; gap:5px;">
+  <figure style="text-align: center;">
+    <img src="img/36.png" alt="图片1" style="border-radius: 20px; height: 400px; width: auto;">
+    <figcaption><small>UV2</small></figcaption>
+  </figure>
+  <figure style="text-align: center;">
+    <img src="img/37.png" alt="图片2" style="border-radius: 20px; height: 400px; width: auto;">
+    <figcaption><small>UV3</small></figcaption>
+  </figure>
+</div>
+
+<figure style="text-align: center;">
+<img src="img/42.png" alt="图片" style=" border-radius: 20px;">
+<figcaption><small>解码的平滑法线<small></small></small></figcaption>
+</figure>
+
+<p>虽然我们使用Malt时不会用外扩法线的方式去做描边,也就用不到<code>UV1</code>,但是这里还是提一下怎么使用,毕竟做都做了</p>
+<p>法线的压缩方式可以参考<a href="https://zhuanlan.zhihu.com/p/677238789">文章</a></p>
+<p></p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">vec3</span><span class="w"> </span><span class="n">Decode</span><span class="p">(</span><span class="kt">vec2</span><span class="w"> </span><span class="n">f</span><span class="p">){</span>
+<span class="w">    </span><span class="n">f</span><span class="o">-=</span><span class="kt">vec2</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="mf">1.</span><span class="p">);</span><span class="c1">//移到原点</span>
+<span class="w">    </span><span class="kt">vec3</span><span class="w"> </span><span class="n">n</span><span class="o">=</span><span class="kt">vec3</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="n">f</span><span class="p">.</span><span class="n">y</span><span class="p">,</span><span class="mf">1.</span><span class="o">-</span><span class="n">abs</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="n">abs</span><span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">y</span><span class="p">));</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">t</span><span class="o">=</span><span class="n">clamp</span><span class="p">(</span><span class="o">-</span><span class="n">n</span><span class="p">.</span><span class="n">z</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">1.</span><span class="p">);</span>
+<span class="w">    </span><span class="n">n</span><span class="p">.</span><span class="n">x</span><span class="o">+=</span><span class="p">(</span><span class="n">n</span><span class="p">.</span><span class="n">x</span><span class="o">&gt;=</span><span class="mf">0.</span><span class="p">)</span><span class="o">?-</span><span class="n">t</span><span class="o">:</span><span class="n">t</span><span class="p">;</span>
+<span class="w">    </span><span class="n">n</span><span class="p">.</span><span class="n">y</span><span class="o">+=</span><span class="p">(</span><span class="n">n</span><span class="p">.</span><span class="n">y</span><span class="o">&gt;=</span><span class="mf">0.</span><span class="p">)</span><span class="o">?-</span><span class="n">t</span><span class="o">:</span><span class="n">t</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">normalize</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// return normalize(n)*0.5+0.5; // 0~1范围的法线贴图</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+这样就得到了平滑的法线矢量,将其变换到世界空间就可以在描边上使用了
+<h2 id="_3">顶点色</h2>
+<p>角色有一个顶点色,由于没有找到相关的讨论,不太清楚是干什么用的,感觉都和描边有关</p>
+<div style="display: flex; justify-content: center; align-items: flex-start; gap:5px;">
+  <figure style="text-align: center;">
+    <img src="img/38.png" alt="图片1" style="border-radius: 20px; height: 400px; width: auto;">
+    <figcaption><small>R</small></figcaption>
+  </figure>
+  <figure style="text-align: center;">
+    <img src="img/39.png" alt="图片2" style="border-radius: 20px; height: 400px; width: auto;">
+    <figcaption><small>G</small></figcaption>
+  </figure>
+</div>
+
+<div style="display: flex; justify-content: center; align-items: flex-start; gap:5px;">
+  <figure style="text-align: center;">
+    <img src="img/40.png" alt="图片1" style="border-radius: 20px; height: 400px; width: auto;">
+    <figcaption><small>B</small></figcaption>
+  </figure>
+  <figure style="text-align: center;">
+    <img src="img/41.png" alt="图片2" style="border-radius: 20px; height: 400px; width: auto;">
+    <figcaption><small>A</small></figcaption>
+  </figure>
+</div>
+
+<h2 id="_4">创建阴影</h2>
+<h3 id="_5">法线转换</h3>
+<p>在创建阴影前先处理法线贴图,下面这个函数是补全法线贴图并添加缩放参数控制法线的强度</p>
+<p>函数内容大概是:</p>
+<ul>
+<li>将法线映射到[-1,1]</li>
+<li>添加缩放参数</li>
+<li>计算出z分量</li>
+<li>再映射回[0,1]</li>
+<li>将其他两个通道原样输出</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">//采样绿色法线</span>
+<span class="cm">/*  META</span>
+<span class="cm">@UV: label=UV; default=UV[0];</span>
+<span class="cm">@scale: default=1.0;</span>
+<span class="cm">*/</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">Smapler_green_normal</span><span class="p">(</span><span class="k">in</span><span class="w"> </span><span class="kt">sampler2D</span><span class="w"> </span><span class="n">tex</span><span class="p">,</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">vec2</span><span class="w"> </span><span class="n">UV</span><span class="p">,</span><span class="k">in</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">scale</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">vec3</span><span class="w"> </span><span class="n">normal</span><span class="p">,</span><span class="k">out</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">tex_b</span><span class="p">,</span><span class="k">out</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">tex_a</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">vec4</span><span class="w"> </span><span class="n">tex_color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">texture</span><span class="p">(</span><span class="n">tex</span><span class="p">,</span><span class="w"> </span><span class="n">UV</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">vec2</span><span class="w"> </span><span class="n">xy</span><span class="o">=</span><span class="n">tex_color</span><span class="p">.</span><span class="n">rg</span><span class="o">*</span><span class="mf">2.0</span><span class="o">-</span><span class="mf">1.0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">xy</span><span class="o">*=</span><span class="n">scale</span><span class="p">;</span>
+<span class="w">    </span><span class="n">normal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="n">xy</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">xy</span><span class="p">.</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">clamp</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">xy</span><span class="p">,</span><span class="w"> </span><span class="n">xy</span><span class="p">),</span><span class="mf">0.</span><span class="p">,</span><span class="mf">1.</span><span class="p">)));</span>
+<span class="w">    </span><span class="n">normal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">normal</span><span class="o">*</span><span class="mf">0.5</span><span class="o">+</span><span class="mf">0.5</span><span class="p">;</span>
+<span class="w">    </span><span class="n">tex_b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tex_color</span><span class="p">.</span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="n">tex_a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tex_color</span><span class="p">.</span><span class="n">a</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>另外用到的一个工具函数是<code>HasImage</code>,用来判断是否有输入贴图,因为有些物体是没有法线贴图的
+</p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">HasImage</span><span class="p">(</span><span class="k">in</span><span class="w"> </span><span class="kt">sampler2D</span><span class="w"> </span><span class="n">Image</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">result</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">textureSize</span><span class="p">(</span><span class="n">Image</span><span class="p">,</span><span class="w"> </span><span class="mo">0</span><span class="p">).</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<figure style="text-align: center;">
+<img src="img/47.png" alt="图片" style=" border-radius: 20px;">
+<figcaption><small>输出的法线<small></small></small></figcaption>
+</figure>
+<figure style="text-align: center;">
+<img src="img/48.png" alt="图片" style=" border-radius: 20px;">
+<figcaption><small>节点图<small></small></small></figcaption>
+</figure>
+<p>使用内置的<code>Tangent To World Normal</code>节点,将切线空间的法线转为世界空间</p>
+<p>使用<code>HasImage</code>判断有没有输入法线贴图,如果没有就使用默认的法线</p>
+<h3 id="_6">二分阴影</h3>
+<div style="display: flex; justify-content: center; align-items: flex-start; gap:5px;">
+  <figure style="text-align: center;">
+    <img src="img/49.png" alt="图片1" style="border-radius: 20px; height: 400px; width: auto;">
+    <figcaption><small>固有阴影</small></figcaption>
+  </figure>
+  <figure style="text-align: center;">
+    <img src="img/50.png" alt="图片2" style="border-radius: 20px; height: 400px; width: auto;">
+    <figcaption><small>头发阴影</small></figcaption>
+  </figure>
+</div>
+<div style="display: flex; justify-content: center; align-items: flex-start; gap:5px;">
+  <figure style="text-align: center;">
+    <img src="img/51.png" alt="图片1" style="border-radius: 20px; height: 400px; width: auto;">
+    <figcaption><small>AO</small></figcaption>
+  </figure>
+  <figure style="text-align: center;">
+    <img src="img/52.png" alt="图片2" style="border-radius: 20px; height: 400px; width: auto;">
+    <figcaption><small>光照阴影</small></figcaption>
+  </figure>
+</div>
+
+<ul>
+<li>使用<code>smoothstep</code>选出<code>_D贴图的Alpha通道</code>的阴影部分</li>
+<li>使用<code>smoothstep</code>选出<code>_HM贴图的G通道</code>的阴影部分</li>
+<li>使内置的<code>Ambient Occlusion</code>节点和<code>smoothstep</code>选取AO部分</li>
+<li>使用<code>NPR Diffuse</code>内置着色器输出光照阴影</li>
+</ul>
+<p>最后使用最小值<code>min</code>合并所有的阴影</p>
+<p>对于透明物体的<code>Alpha通道</code>真的是透明,所以需要一个变量手动指定哪些部分是透明的</p>
+<p>对于头发专有的贴图部分,也要用<code>HasImage</code>去混合一下</p>
+<p>在<code>NPR Diffuse</code>中,使用一个参数控制<code>Gradient Size</code>可以控制阴影的软硬</p>
+<h4 id="shadow-offset">阴影偏移Shadow Offset</h4>
+<p>阴影偏移指的是用贴图控制二分的阈值,增加阴影交界处的细节</p>
+<p>使用<code>smoothstep</code>调整<code>_HM贴图的G通道</code>,并连接到<code>NPR Diffuse</code>的<code>Offset</code>去控制阈值</p>
+<div style="display: flex; justify-content: center; align-items: flex-start; gap:5px;">
+  <figure style="text-align: center;">
+    <img src="img/54.png" alt="图片1" style="border-radius: 20px; height: 400px; width: auto;">
+    <figcaption><small>阴影偏移关</small></figcaption>
+  </figure>
+  <figure style="text-align: center;">
+    <img src="img/53.png" alt="图片2" style="border-radius: 20px; height: 400px; width: auto;">
+    <figcaption><small>阴影偏移开</small></figcaption>
+  </figure>
+</div>
+
+<figure style="text-align: center;">
+<img src="img/55.png" alt="图片" style=" border-radius: 20px;">
+<figcaption><small>节点图<small></small></small></figcaption>
+</figure>
+<figure style="text-align: center;">
+<img src="img/56.png" alt="图片" style=" border-radius: 20px;">
+<figcaption><small>头发部分<small></small></small></figcaption>
+</figure>
+<figure style="text-align: center;">
+<img src="img/57.png" alt="图片" style=" border-radius: 20px;">
+<figcaption><small>阴影<small></small></small></figcaption>
+</figure>
+<p>最后得到的应该是一个这样的黑白阴影</p>
+<h3 id="_7">阴影着色</h3>
+<p>创建完黑白的阴影图之后,我们需要将阴影叠加到颜色贴图上</p>
+<p class="annotate">这里用一个函数给阴影映射上颜色,这里拆分成两段线性(1)的渐变三种颜色,是为了能给阴影的交界处单独着色</p>
+<ol>
+<li>你也可以换成其他的更平滑的映射</li>
+</ol>
+<p>将阴影色和中间色暴露给材质,这样就能为每个材质指定不同的颜色</p>
+<p>最后直接与颜色贴图相乘,就完成了阴影的添加</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">//三种颜色的渐变</span>
+<span class="cm">/*  META</span>
+<span class="cm">@position1: subtype=Slider;default=0.0;min=0.0;max=1.0;</span>
+<span class="cm">@position2: subtype=Slider;default=0.5;min=0.0;max=1.0;</span>
+<span class="cm">@position3: subtype=Slider;default=1.0;min=0.0;max=1.0;</span>
+<span class="cm">@color1: default=(0.0, 0.0, 0.0);</span>
+<span class="cm">@color2: default=(0.5, 0.5, 0.5);</span>
+<span class="cm">@color3: default=(1.0, 1.0, 1.0);</span>
+<span class="cm">*/</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">ramp_3colors</span><span class="p">(</span><span class="k">in</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="k">in</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">position1</span><span class="p">,</span><span class="k">in</span><span class="w"> </span><span class="kt">vec3</span><span class="w"> </span><span class="n">color1</span><span class="p">,</span>
+<span class="w">    </span><span class="k">in</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">position2</span><span class="p">,</span><span class="k">in</span><span class="w"> </span><span class="kt">vec3</span><span class="w"> </span><span class="n">color2</span><span class="p">,</span>
+<span class="w">    </span><span class="k">in</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">position3</span><span class="p">,</span><span class="k">in</span><span class="w"> </span><span class="kt">vec3</span><span class="w"> </span><span class="n">color3</span><span class="p">,</span>
+<span class="k">out</span><span class="w"> </span><span class="kt">vec3</span><span class="w"> </span><span class="n">result</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">position1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">position3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">color3</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">position2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 在 [position1, position2] 区间进行 color1 → color2 插值</span>
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">position1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">position2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">position1</span><span class="p">);</span>
+<span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mix</span><span class="p">(</span><span class="n">color1</span><span class="p">,</span><span class="w"> </span><span class="n">color2</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 在 [position2, position3] 区间进行 color2 → color3 插值</span>
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">position2</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">position3</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">position2</span><span class="p">);</span>
+<span class="w">        </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mix</span><span class="p">(</span><span class="n">color2</span><span class="p">,</span><span class="w"> </span><span class="n">color3</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<figure style="text-align: center;">
+<img src="img/58.png" alt="图片" style=" border-radius: 20px;">
+<figcaption><small>阴影<small></small></small></figcaption>
+</figure>
+
+<div style="display: flex; justify-content: center; align-items: flex-start; gap:5px;">
+  <figure style="text-align: center;">
+    <img src="img/59.png" alt="图片1" style="border-radius: 20px; height: 400px; width: auto;">
+    <figcaption><small>阴影着色</small></figcaption>
+  </figure>
+  <figure style="text-align: center;">
+    <img src="img/60.png" alt="图片2" style="border-radius: 20px; height: 400px; width: auto;">
+    <figcaption><small>直接相乘</small></figcaption>
+  </figure>
+</div>
+
+<h2 id="sdf_1">SDF</h2>
+<p>对于脸部的这种比较重要的部位,如果直接使用默认的光影,那么脸部的阴影将会是非常杂乱切不连续的</p>
+<p>尽管鸣潮的模型已经做了脸部的平面法线,但如果想更精细的控制脸部阴影还是需要使用SDF贴图</p>
+<div style="display: flex; justify-content: center; align-items: flex-end; gap: 10px; flex-wrap: nowrap;">
+  <figure style="text-align: center; margin: 0;">
+    <img src="img/63.png" alt="图片1" style="border-radius: 20px; height: 400px;object-fit: contain;">
+    <figcaption><small>不做任何修改的阴影</small></figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="img/61.png" alt="图片2" style="border-radius: 20px; height: 400px;object-fit: contain;">
+    <figcaption><small>平滑法线</small></figcaption>
+  </figure>
+  <figure style="text-align: center; margin: 0;">
+    <img src="img/62.png" alt="图片3" style="border-radius: 20px; height: 400px;object-fit: contain;">
+    <figcaption><small>SDF</small></figcaption>
+  </figure>
+</div>
+
+<p>SDF是一张记录着各个角度时阴影分界线的阈值图</p>
+<p>在日光和脸的夹角在不同的角度时取不同的阈值,用这个阈值对SDF图进行截取,就可以获得阴影边界了</p>
+<p>当日光方向和面部方向相反时(正光夹角为180°),阈值为0,全为亮面</p>
+<p>当日光方向和面部方向相同时(背光夹角为0°),阈值为1,全为暗面</p>
+<p>所需的图大致如图A所示,圆圈表示不同角度的日光方向时的阈值</p>
+<p>而我们输入的夹角将图B一样,需要将B图映射为A图</p>
+<div style="display: flex; justify-content: center; align-items: flex-start; gap:5px;">
+  <figure style="text-align: center;">
+    <img src="img/64.png" alt="图片1" style="border-radius: 20px; height: 400px; width: auto;object-fit: contain;">
+    <figcaption><small>A 需要的输出的值</small></figcaption>
+  </figure>
+  <figure style="text-align: center;">
+    <img src="img/65.png" alt="图片2" style="border-radius: 20px; height: 400px; width: auto;object-fit: contain;">
+    <figcaption><small>B 角度的输入</small></figcaption>
+  </figure>
+</div>
+<div style="display: flex; justify-content: center; align-items: flex-start; gap:5px;">
+  <figure style="text-align: center;">
+    <img src="img/66.png" alt="图片1" style="border-radius: 20px; height: 400px; width: auto;object-fit: contain;">
+    <figcaption><small>C mod(angle, 2.0*PI)-PI</small></figcaption>
+  </figure>
+  <figure style="text-align: center;">
+    <img src="img/67.png" alt="图片2" style="border-radius: 20px; height: 400px; width: auto;object-fit: contain;">
+    <figcaption><small>D -cos(angle)</small></figcaption>
+  </figure>
+</div>
+
+<p>先取2π模,这是为了将较大的角度都映射到[0,2π],然后再-π</p>
+<p>最后用cos就可以把角度映射到[-1,1]图D,再*0.5+0.5就可以映射到[0,1]我们需要的值了</p>
+<p>SDF只记录了一侧光照的信息,左右两侧是对称的,需要根据光照方向进行切换</p>
+<p>不能使用<code>dot</code>去获取两个矢量的夹角,因为<code>dot</code>获取不到夹角的正负值,这里用<code>arctan2</code>函数来获取夹角,这是具有正负值的</p>
+<p>翻转uv,采样两张不同方向的SDF图,然后根据angle的正负值去选择需要哪一边的SDF</p>
+<p>使用<code>smoothstep</code>根据阈值选出分界线,还可以加入<code>smoothness</code>参数控制交界的平滑度</p>
+<p>用到的函数:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">SDF</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">//输入日光方向和面部方向,输出一个SDF用的角度</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">DirToSDFAngle</span><span class="p">(</span><span class="k">in</span><span class="w"> </span><span class="kt">vec3</span><span class="w"> </span><span class="n">face_dir</span><span class="p">,</span><span class="k">in</span><span class="w"> </span><span class="kt">vec3</span><span class="w"> </span><span class="n">sun_dir</span><span class="p">,</span><span class="k">out</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">angle</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">face_dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">normalize</span><span class="p">(</span><span class="n">face_dir</span><span class="o">*</span><span class="kt">vec3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mo">0</span><span class="p">));</span><span class="c1">//转换为水平平面的矢量</span>
+<span class="w">    </span><span class="n">sun_dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">normalize</span><span class="p">(</span><span class="n">sun_dir</span><span class="o">*</span><span class="kt">vec3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mo">0</span><span class="p">));</span><span class="c1">//转换为水平平面的矢量</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">face_angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atan</span><span class="p">(</span><span class="n">face_dir</span><span class="p">.</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">face_dir</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">sun_angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atan</span><span class="p">(</span><span class="n">sun_dir</span><span class="p">.</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">sun_dir</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+<span class="w">    </span><span class="n">sun_angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mod</span><span class="p">(</span><span class="n">sun_angle</span><span class="o">-</span><span class="n">PI</span><span class="o">/</span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="o">*</span><span class="n">PI</span><span class="p">);</span>
+<span class="w">    </span><span class="n">face_angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mod</span><span class="p">(</span><span class="n">face_angle</span><span class="o">+</span><span class="n">PI</span><span class="o">/</span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="o">*</span><span class="n">PI</span><span class="p">)</span><span class="o">-</span><span class="n">PI</span><span class="p">;</span>
+<span class="w">    </span><span class="n">angle</span><span class="o">=</span><span class="w"> </span><span class="n">sun_angle</span><span class="o">-</span><span class="n">face_angle</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="c1">//输入一个角度和SDF图,输出一个二分阴影的mask</span>
+
+<span class="cm">/*  META</span>
+<span class="cm">@UV: label=UV; default=UV[0];</span>
+<span class="cm">@smoothness: subtype=Slider;default=0.02;min=0.0;max=1.0;</span>
+<span class="cm">*/</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">toon_sdf_mask</span><span class="p">(</span><span class="k">in</span><span class="w"> </span><span class="kt">sampler2D</span><span class="w"> </span><span class="n">SDF</span><span class="p">,</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">vec2</span><span class="w"> </span><span class="n">UV</span><span class="p">,</span><span class="k">in</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">angle</span><span class="p">,</span><span class="k">in</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">smoothness</span><span class="p">,</span><span class="k">in</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">mask</span><span class="p">,</span><span class="k">out</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">SDF_R</span><span class="p">,</span><span class="k">out</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">SDF_G</span><span class="p">,</span><span class="k">out</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">SDF_B</span><span class="p">,</span><span class="k">out</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">SDF_A</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">vec4</span><span class="w"> </span><span class="n">SDF_RIGHT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">texture</span><span class="p">(</span><span class="n">SDF</span><span class="p">,</span><span class="w"> </span><span class="n">UV</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SDF_R_F</span><span class="w"> </span><span class="o">=</span><span class="p">(</span><span class="w"> </span><span class="n">SDF_RIGHT</span><span class="p">.</span><span class="n">r</span><span class="o">+</span><span class="n">SDF_RIGHT</span><span class="p">.</span><span class="n">b</span><span class="o">+</span><span class="n">SDF_RIGHT</span><span class="p">.</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="mf">3.0</span><span class="o">+</span><span class="n">offset</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">vec4</span><span class="w"> </span><span class="n">SDF_LEFT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">texture</span><span class="p">(</span><span class="n">SDF</span><span class="p">,</span><span class="w"> </span><span class="kt">vec2</span><span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">UV</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">UV</span><span class="p">.</span><span class="n">y</span><span class="p">));</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">SDF_L_F</span><span class="w"> </span><span class="o">=</span><span class="p">(</span><span class="n">SDF_LEFT</span><span class="p">.</span><span class="n">r</span><span class="o">+</span><span class="n">SDF_LEFT</span><span class="p">.</span><span class="n">b</span><span class="o">+</span><span class="n">SDF_LEFT</span><span class="p">.</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="mf">3.0</span><span class="o">+</span><span class="n">offset</span><span class="p">;</span>
+<span class="w">    </span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="n">mod</span><span class="p">(</span><span class="n">angle</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="o">*</span><span class="n">PI</span><span class="p">)</span><span class="o">-</span><span class="n">PI</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">Threshold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span><span class="o">*</span><span class="mf">0.5</span><span class="o">+</span><span class="mf">0.5</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">angle</span><span class="o">&gt;</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">smoothstep</span><span class="p">(</span><span class="n">Threshold</span><span class="o">-</span><span class="n">smoothness</span><span class="p">,</span><span class="n">Threshold</span><span class="o">+</span><span class="n">smoothness</span><span class="p">,</span><span class="n">SDF_R_F</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">smoothstep</span><span class="p">(</span><span class="n">Threshold</span><span class="o">-</span><span class="n">smoothness</span><span class="p">,</span><span class="n">Threshold</span><span class="o">+</span><span class="n">smoothness</span><span class="p">,</span><span class="n">SDF_L_F</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">SDF_R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SDF_RIGHT</span><span class="p">.</span><span class="n">r</span><span class="p">;</span>
+<span class="w">    </span><span class="n">SDF_G</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SDF_RIGHT</span><span class="p">.</span><span class="n">g</span><span class="p">;</span>
+<span class="w">    </span><span class="n">SDF_B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SDF_RIGHT</span><span class="p">.</span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="n">SDF_A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SDF_RIGHT</span><span class="p">.</span><span class="n">a</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<figure style="text-align: center;">
+<img src="img/69.png" alt="图片" style=" border-radius: 20px;">
+<figcaption><small>节点图<small></small></small></figcaption>
+</figure>
+
+<p>将输出的mask与之前的阴影取最小值即可</p>
+<h3 id="shader">如何传递数据到Shader内</h3>
+<p>那么问题来了.怎么将面部方向和日光方向传入Shader中去</p>
+<h4 id="_8">驱动器</h4>
+<p>一个简单的方法是使用驱动器,将日光的旋转复制驱动器到矢量旋转里,这样就可以获得方向</p>
+<p>但是这样不够优雅(bushi)</p>
+<figure style="text-align: center;">
+<img src="img/70.png" alt="图片" style=" border-radius: 20px;">
+<figcaption><small>使用驱动器<small></small></small></figcaption>
+</figure>
+
+<p>接下来介绍一种奇技淫巧的方法将数据传入shader中</p>
+<h4 id="_9">灯光传递</h4>
+<p>Shader中是可以读取到灯光的,所有的灯光都会在一个灯光数组内,我们只需要在shader中找到绑定在脸上的灯光,然后读取它的方向,日光也是一样的</p>
+<p>所有的灯光都在<code>LIGHTS.lights</code>数组里,每个项都是一个结构体,结构体里存储了灯光的各种信息,需要设置一些过滤条件,就可以找到需要的灯光</p>
+<p>下面这个函数会根据条件是否相等过滤灯光,如果输入为0,则不启用这个条件</p>
+<p>因为<code>LIGHTS.lights</code>只在<code>MESH_SHADER</code>有效,所以加了宏定义防止报错</p>
+<p>节点组还用日光的亮度去混合SDF的强度,如果日光亮度为0,就不使用SDF了</p>
+<figure style="text-align: center;">
+<img src="img/71.png" alt="图片" style=" border-radius: 20px;">
+<figcaption><small>节点图<small></small></small></figcaption>
+</figure>
+
+<figure style="text-align: center;">
+<img src="img/72.png" alt="图片" style=" border-radius: 20px;">
+<figcaption><small>将一个聚光绑定到脸上<small></small></small></figcaption>
+</figure>
+
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">find_light</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span>
+<span class="normal">96</span>
+<span class="normal">97</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#if defined(IS_MESH_SHADER) || defined(IS_SCREEN_SHADER)</span>
+<span class="cp">#ifdef IS_MESH_SHADER</span>
+<span class="cm">/*  META</span>
+<span class="cm">@position: subtype=Vector; default=(0.0,0.0,0.0);</span>
+<span class="cm">@color: default=(0.0,0.0,0.0);</span>
+<span class="cm">@strength: default=0.0;</span>
+<span class="cm">@type: default=0;</span>
+<span class="cm">@direction: default=(0.0,0.0,0.0);</span>
+<span class="cm">@spot_angle: default=0.0;</span>
+<span class="cm">@spot_blend: default=0.0;</span>
+<span class="cm">@light_groups: default=MATERIAL_LIGHT_GROUPS;</span>
+<span class="cm">*/</span>
+<span class="cp">#else</span>
+<span class="cm">/*  META</span>
+<span class="cm">@position: subtype=Vector; default=(0.0,0.0,0.0);</span>
+<span class="cm">@color: default=(0.0,0.0,0.0);</span>
+<span class="cm">@strength: default=0.0;</span>
+<span class="cm">@type: default=0;</span>
+<span class="cm">@direction: default=(0.0,0.0,0.0);</span>
+<span class="cm">@spot_angle: default=0.0;</span>
+<span class="cm">@spot_blend: default=0.0;</span>
+<span class="cm">@light_groups: default=ivec4(1,0,0,0);</span>
+<span class="cm">*/</span>
+<span class="cp">#endif</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">find_light</span><span class="p">(</span>
+<span class="w">    </span><span class="k">in</span><span class="w"> </span><span class="kt">vec3</span><span class="w"> </span><span class="n">position</span><span class="p">,</span>
+<span class="w">    </span><span class="k">in</span><span class="w"> </span><span class="kt">vec3</span><span class="w"> </span><span class="n">color</span><span class="p">,</span>
+<span class="w">    </span><span class="k">in</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">Strength</span><span class="p">,</span>
+<span class="w">    </span><span class="k">in</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">type</span><span class="p">,</span>
+<span class="w">    </span><span class="k">in</span><span class="w"> </span><span class="kt">vec3</span><span class="w"> </span><span class="n">direction</span><span class="p">,</span>
+<span class="w">    </span><span class="k">in</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">spot_angle</span><span class="p">,</span>
+<span class="w">    </span><span class="k">in</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">spot_blend</span><span class="p">,</span>
+<span class="w">    </span><span class="k">in</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">radius</span><span class="p">,</span>
+<span class="w">    </span><span class="k">in</span><span class="w"> </span><span class="kt">ivec4</span><span class="w"> </span><span class="n">light_groups</span><span class="p">,</span>
+<span class="w">    </span><span class="k">out</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">found</span><span class="p">,</span><span class="w">          </span><span class="c1">// 是否找到</span>
+<span class="w">    </span><span class="k">out</span><span class="w"> </span><span class="n">Light</span><span class="w"> </span><span class="n">L</span><span class="w">              </span><span class="c1">// 找到的灯光</span>
+<span class="w">    </span><span class="c1">// *灯光过滤函数，根据灯光属性进行过滤，返回找到的第一个满足条件的灯光</span>
+<span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">L</span><span class="p">.</span><span class="n">position</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mf">0.0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">L</span><span class="p">.</span><span class="n">direction</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">L</span><span class="p">.</span><span class="n">color</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="kt">vec3</span><span class="p">(</span><span class="mf">0.0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">L</span><span class="p">.</span><span class="n">type</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="mo">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">L</span><span class="p">.</span><span class="n">spot_angle</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">L</span><span class="p">.</span><span class="n">spot_blend</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">found</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">spot_angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">radians</span><span class="p">(</span><span class="n">spot_angle</span><span class="p">);</span>
+<span class="w">    </span><span class="n">spot_blend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">radians</span><span class="p">(</span><span class="n">spot_blend</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mo">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">LIGHTS</span><span class="p">.</span><span class="n">lights_count</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Light</span><span class="w"> </span><span class="n">L_temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LIGHTS</span><span class="p">.</span><span class="n">lights</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">        </span><span class="c1">// 灯光分组匹配</span>
+<span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="n">group_match</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mo">0</span><span class="p">;</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">g</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">light_groups</span><span class="p">[</span><span class="n">g</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mo">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">LIGHT_GROUP_INDEX</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">light_groups</span><span class="p">[</span><span class="n">g</span><span class="p">])</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">group_match</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">group_match</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">//判断条件</span>
+<span class="w">        </span><span class="c1">// 位置判断</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">position</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">distance</span><span class="p">(</span><span class="n">L_temp</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">position</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.001</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// 颜色判断</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">color</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">distance</span><span class="p">(</span><span class="n">L_temp</span><span class="p">.</span><span class="n">color</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.001</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">light_strength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">max</span><span class="p">(</span><span class="n">L_temp</span><span class="p">.</span><span class="n">color</span><span class="p">.</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">L_temp</span><span class="p">.</span><span class="n">color</span><span class="p">.</span><span class="n">g</span><span class="p">),</span><span class="w"> </span><span class="n">L_temp</span><span class="p">.</span><span class="n">color</span><span class="p">.</span><span class="n">b</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">// 强度判断</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">Strength</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mo">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">light_strength</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">Strength</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// 类型判断 1:日光 2:点光 3:聚光</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">type</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mo">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">L_temp</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">type</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// 方向判断</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">distance</span><span class="p">(</span><span class="n">L_temp</span><span class="p">.</span><span class="n">direction</span><span class="p">,</span><span class="w"> </span><span class="n">direction</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.001</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// 聚光角度判断</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">spot_angle</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">L_temp</span><span class="p">.</span><span class="n">spot_angle</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">spot_angle</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.001</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// 聚光混合判断</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">spot_blend</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">L_temp</span><span class="p">.</span><span class="n">spot_blend</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">spot_blend</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.001</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1">// 半径判断</span>
+
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">radius</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">distance</span><span class="p">(</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">L_temp</span><span class="p">.</span><span class="n">position</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">radius</span><span class="p">)</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">        </span><span class="c1">// 找到第一个满足条件的灯光</span>
+<span class="w">        </span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L_temp</span><span class="p">;</span>
+<span class="w">        </span><span class="n">L</span><span class="p">.</span><span class="n">direction</span><span class="o">=-</span><span class="n">L</span><span class="p">.</span><span class="n">direction</span><span class="p">;</span>
+<span class="w">        </span><span class="n">found</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="p">}</span>
+<span class="cp">#endif</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="_10">刘海投影</h2>
+<figure style="text-align: center;">
+<img src="img/73.png" alt="图片" style=" border-radius: 20px;">
+<figcaption><small>效果图<small></small></small></figcaption>
+</figure>
+
+<p>刘海投影留到下章再讲,就是获取刘海蒙版然后往下偏移</p></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.code.select", "content.code.annotate"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
